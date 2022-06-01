@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   entry: {
     index: './src/index.js',
     print: './src/print.js',
@@ -17,11 +17,14 @@ module.exports = {
     }),
   ],
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].[hash:8].js',
+    sourceMapFilename: '[name].[hash:8].map',
+    chunkFilename: '[id].[hash:8].js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
     publicPath: '/',
   },
+
   optimization: {
     runtimeChunk: 'single',
   },

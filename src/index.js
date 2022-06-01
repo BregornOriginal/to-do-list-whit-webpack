@@ -2,6 +2,8 @@ import _ from 'lodash';
 import printMe from './print.js';
 import './style.css';
 
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+
 function component() {
   const element = document.createElement('div');
   const btn = document.createElement('button');

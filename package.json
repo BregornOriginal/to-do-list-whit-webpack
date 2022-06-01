@@ -18,6 +18,7 @@
     "acorn-import-assertions": "^1.8.0",
     "ajv": "^6.12.6",
     "ajv-keywords": "^3.5.2",
+    "bootstrap": "^5.2.0-beta1",
     "browserslist": "^4.20.3",
     "buffer-from": "^1.1.2",
     "caniuse-lite": "^1.0.30001344",
