@@ -72,5 +72,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "main": "webpack.config.js"
+  "main": "webpack.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BregornOriginal/to-do-list-whit-webpack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BregornOriginal/to-do-list-whit-webpack/issues"
+  },
+  "homepage": "https://github.com/BregornOriginal/to-do-list-whit-webpack#readme"
 }
