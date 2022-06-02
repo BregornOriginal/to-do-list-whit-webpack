@@ -1,23 +1,66 @@
-import _ from 'lodash';
-import printMe from './print.js';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/bootstrap-icons/font/bootstrap-icons.css'
 import './style.css';
 
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+const toDoTasks = [{
+  description: "Wash the dishes",
+  completed: true,
+  index: 1
+},
+{
+  description: "Complete To Do list project",
+  completed: true,
+  index: 2
+}]
 
-function component() {
-  const element = document.createElement('div');
-  const btn = document.createElement('button');
+const createList = () => {
+  const $listContainer = document.getElementById('list-container');
+  for (let i = 0; i < toDoTasks.length; i += 1) {
 
-  // Lodash, now imported by this script
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  element.classList.add('hello');
+    const $taskContainer = document.createElement('div');
+    $taskContainer.classList.add('task-container');
+    $taskContainer.classList.add('input-group');
+    $taskContainer.classList.add('mb-3');
+    $listContainer.appendChild($taskContainer);
 
-  btn.innerHTML = 'Click me and check the console!';
-  btn.onclick = printMe;
+    const $checkBoxContainer = document.createElement('div');
+    $checkBoxContainer.classList.add('input-group-text');
+    $checkBoxContainer.classList.add('bg-light');
+    $checkBoxContainer.classList.add('text-dark');
+    $taskContainer.appendChild($checkBoxContainer);
 
-  element.appendChild(btn);
+    const $checkBox = document.createElement('input');
+    $checkBox.classList.add('form-check-input');
+    $checkBox.classList.add('mt-0');
+    $checkBox.setAttribute('type', 'checkbox');
+    $checkBox.setAttribute('value', '');
+    $checkBox.setAttribute('aria-label', 'Checkbox for following text input');
+    $checkBoxContainer.appendChild($checkBox);
 
-  return element;
-}
+    const $placeHolderTask = document.createElement('input');
+    $placeHolderTask.classList.add('form-control');
+    $placeHolderTask.setAttribute('type', 'text');
+    $placeHolderTask.setAttribute('placeholder', `${toDoTasks[i].description}`);
+    $placeHolderTask.setAttribute('aria-label', 'Text input with checkbox')
+    $taskContainer.appendChild($placeHolderTask);
 
-document.body.appendChild(component());
+    const $dotsOption = document.createElement('a');
+    $dotsOption.classList.add('bi');
+    $dotsOption.classList.add('bi-three-dots-vertical');
+    $dotsOption.classList.add('bg-secondary');
+    $dotsOption.classList.add('text-white');
+    $taskContainer.appendChild($dotsOption);
+  }
+
+  const $clearButton = document.createElement('button');
+  $clearButton.classList.add('btn');
+  $clearButton.classList.add('btn-secondary');
+  $clearButton.classList.add('btn-lg');
+  $clearButton.classList.add('bg-success');
+  $clearButton.classList.add('text-white');
+  $clearButton.classList.add('clear-button');
+  $clearButton.innerText = 'Clear all Completed';
+  $listContainer.appendChild($clearButton);
+};
+
+createList();
