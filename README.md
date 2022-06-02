@@ -14,7 +14,21 @@
 
 ### Technologies
 
+🔷HTML
+
+🔷CSS
+
+🔷JAVASCRIPT ES6
+
 ### Tools
+
+💠VISUAL STUDIO CODE
+
+💠GITHUB-DESKTOP
+
+💠GITHUB-ACTIONS
+
+💠LINTERS
 
 ## Getting Started
 
@@ -40,13 +54,12 @@
 ### Usage
 
 - You can download an extension for VSCode named "Live Server" so you can see the actual project working in the browser
-
+- Also, you can run npm I to install the dependencies and open it whit webpack
+- To run the program whit webpack you can write the command line `npm run start`
 
 ## Authors
 
 👤 **@BregornOriginal**
-
-- GitHub: [@githubhandle](https://github.com/@BregornOriginal)
 
 ## 🤝 Contributing
 
