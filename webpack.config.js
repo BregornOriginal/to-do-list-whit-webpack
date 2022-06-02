@@ -5,7 +5,6 @@ module.exports = {
   mode: 'development',
   entry: {
     index: './src/index.js',
-    print: './src/print.js',
   },
   devtool: 'inline-source-map',
   devServer: {
@@ -22,9 +21,7 @@ module.exports = {
     chunkFilename: '[id].[hash:8].js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
-    publicPath: '/',
   },
-
   optimization: {
     runtimeChunk: 'single',
   },
