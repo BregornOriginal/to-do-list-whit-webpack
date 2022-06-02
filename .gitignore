@@ -1,8 +1,2 @@
-node_modules
 dist/
-package-lock.json
-package.json
-node_modules/
-.hintrc
-.stylelintrc.json
-.eslintrc.json
+node_modules
