@@ -28,6 +28,7 @@
     "ajv": "^6.12.6",
     "ajv-keywords": "^3.5.2",
     "bootstrap": "^5.2.0-beta1",
+    "bootstrap-icons": "^1.8.3",
     "browserslist": "^4.20.3",
     "buffer-from": "^1.1.2",
     "caniuse-lite": "^1.0.30001344",
