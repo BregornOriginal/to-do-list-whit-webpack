@@ -3,25 +3,21 @@ body {
 }
 
 .input-group {
-	width: 40%;
-}
-
-.bi-three-dots-vertical {
-	size: 1em;
+  width: 40%;
 }
 
 .clear-button {
-	display: flex;
-	justify-content: center;
-	width: 40%;
+  display: flex;
+  justify-content: center;
+  width: 40%;
 }
 
 #list-container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .btn-outline-secondary {
-	background-color: rgb(204, 230, 253);
+  background-color: rgb(204, 230, 253);
 }
