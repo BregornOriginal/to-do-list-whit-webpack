@@ -1,3 +1,5 @@
+/* eslint implicit-arrow-linebreak: ["error", "below"] */
+
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap-icons/font/bootstrap-icons.css';
 import './style.css';
@@ -10,13 +12,38 @@ class Task {
     this.completed = completed;
     this.index = index;
   }
-};
+}
+
+let toDoTasks = [];
 
 const $listContainer = document.getElementById('list-container');
 const $textNewTask = document.getElementById('textNewTask');
 const $addButton = document.querySelector('.add-button');
 
-let toDoTasks = [];
+const editText = ($checkBoxContainer, toDo) => {
+  const $newPlaceHolderTask = document.createElement('input');
+  $newPlaceHolderTask.classList.add('checked', 'form-control');
+  $newPlaceHolderTask.setAttribute('type', 'text');
+  $newPlaceHolderTask.value = toDo.textContent;
+  $newPlaceHolderTask.setAttribute('aria-label', 'Text input with checkbox');
+  $checkBoxContainer.replaceChild($newPlaceHolderTask, toDo);
+  $newPlaceHolderTask.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      const $allTaskContainers = document.querySelectorAll('.task-container');
+      const localData = JSON.parse(localStorage.getItem('list'));
+      for (let i = 0; i < $allTaskContainers.length; i += 1) {
+        if ($allTaskContainers[i].firstChild.nextSibling.classList.contains('checked')) {
+          localData[i].description = $newPlaceHolderTask.value;
+          localStorage.setItem('list', JSON.stringify(localData));
+        }
+      }
+      $newPlaceHolderTask.classList.remove('checked');
+      $checkBoxContainer.replaceChild(toDo, $newPlaceHolderTask);
+      toDo.textContent = $newPlaceHolderTask.value;
+      toDoTasks = [...localData];
+    }
+  });
+};
 
 const addTask = () => {
   const $taskContainer = document.createElement('div');
@@ -40,7 +67,7 @@ const addTask = () => {
     $checkBox.parentElement.nextElementSibling.classList.toggle('line-through');
     $checkBox.parentElement.parentElement.lastElementChild.classList.toggle('trash-active');
     $checkBox.parentElement.parentElement.lastElementChild.previousElementSibling.classList.toggle('hidden');
-  })
+  });
 
   const $placeHolderTask = document.createElement('span');
   $placeHolderTask.classList.add('form-control');
@@ -55,7 +82,7 @@ const addTask = () => {
 
   $dotsOption.addEventListener('click', () => {
     editText($taskContainer, $placeHolderTask);
-  })
+  });
 
   const $trash = document.createElement('i');
   $trash.classList.add('hidden', 'trash-icon', 'fa-solid', 'fa-trash-can');
@@ -63,57 +90,33 @@ const addTask = () => {
 
   $trash.addEventListener('click', () => {
     $trash.parentElement.remove();
-    const newToDoTask = toDoTasks.filter(task => task.index !== parseInt($trash.parentElement.id, 10));
+    const newToDoTask = toDoTasks.filter((task) =>
+      task.index !== parseInt($trash.parentElement.id, 10));
     toDoTasks = [...newToDoTask];
     updateIndex(toDoTasks);
     updateElementId(toDoTasks);
     localStorage.setItem('list', JSON.stringify(toDoTasks));
-  })
+  });
 
   const object = new Task($textNewTask.value, false, toDoTasks.length + 1);
   toDoTasks.push(object);
   localStorage.setItem('list', JSON.stringify(toDoTasks));
 };
 
-$textNewTask.addEventListener('keypress', e => {
+$textNewTask.addEventListener('keypress', (e) => {
   if (e.key === 'Enter' && $textNewTask.value) {
     e.preventDefault();
     addTask($textNewTask.value);
     $textNewTask.value = '';
   }
-})
+});
 
-$addButton.addEventListener('click', e => {
+$addButton.addEventListener('click', (e) => {
   if ($textNewTask.value) {
     e.preventDefault();
     addTask($textNewTask.value);
     $textNewTask.value = '';
-    console.log(JSON.parse(localStorage.getItem('list')))
-    console.log(toDoTasks)
+    console.log(JSON.parse(localStorage.getItem('list')));
+    console.log(toDoTasks);
   }
-})
-
-const editText = ($checkBoxContainer, toDo) => {
-  const $newPlaceHolderTask = document.createElement('input');
-  $newPlaceHolderTask.classList.add('checked', 'form-control');
-  $newPlaceHolderTask.setAttribute('type', 'text');
-  $newPlaceHolderTask.value = toDo.textContent;
-  $newPlaceHolderTask.setAttribute('aria-label', 'Text input with checkbox');
-  $checkBoxContainer.replaceChild($newPlaceHolderTask, toDo);
-  $newPlaceHolderTask.addEventListener('keypress', e => {
-    if (e.key === 'Enter') {
-      const $allTaskContainers = document.querySelectorAll('.task-container');
-      let localData = JSON.parse(localStorage.getItem('list'));
-      for (let i = 0; i < $allTaskContainers.length; i += 1) {
-        if ($allTaskContainers[i].firstChild.nextSibling.classList.contains('checked')) {
-          localData[i].description = $newPlaceHolderTask.value;
-          localStorage.setItem('list', JSON.stringify(localData));
-        }
-      }
-      $newPlaceHolderTask.classList.remove('checked');
-      $checkBoxContainer.replaceChild(toDo, $newPlaceHolderTask);
-      toDo.textContent = $newPlaceHolderTask.value;
-      toDoTasks = [...localData];
-    }
-  })
-};
+});
