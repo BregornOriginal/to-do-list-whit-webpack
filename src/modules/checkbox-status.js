@@ -1,12 +1,12 @@
-// export const clearAllTasks = (list) => {
-//   const $containers = document.querySelectorAll('.task-container');
-//   list.forEach((task) => {
-//     if (task.completed) {
-//       $containers.forEach((element) => {
-//         if (task.index === parseInt(element.id, 10)) {
-//           element.remove();
-//         }
-//       });
-//     }
-//   });
+// const $checkBox = document.querySelector('#checkbox')
+
+// export const clearAllTasks = () => {
+//     $checkBox.addEventListener('click', (e) => {
+//       if ($checkBox.checked) {
+//         toDoTasks[parseInt($checkBox.parentElement.parentElement.id, 10) - 1].completed = true;
+//         console.log(toDoTasks[parseInt($checkBox.parentElement.parentElement.id, 10) - 1])
+//       } else {
+//         toDoTasks[parseInt($checkBox.parentElement.parentElement.id, 10) - 1].completed = false;
+//       }
+//     })
 // };

@@ -14,6 +14,7 @@ let toDoTasks = [];
 
 const $listContainer = document.getElementById('list-container');
 const $textNewTask = document.getElementById('textNewTask');
+const $clearButton = document.querySelector('.clear-button');
 
 export const editText = ($checkBoxContainer, toDo) => {
   const $newPlaceHolderTask = document.createElement('input');
@@ -62,12 +63,14 @@ export const addTask = () => {
     $checkBox.parentElement.nextElementSibling.classList.toggle('line-through');
     $checkBox.parentElement.parentElement.lastElementChild.classList.toggle('trash-active');
     $checkBox.parentElement.parentElement.lastElementChild.previousElementSibling.classList.toggle('hidden');
+    console.log(toDoTasks[parseInt($checkBox.parentElement.parentElement.id, 10) - 1])
 
     if ($checkBox.checked) {
       toDoTasks[parseInt($checkBox.parentElement.parentElement.id, 10) - 1].completed = true;
     } else {
       toDoTasks[parseInt($checkBox.parentElement.parentElement.id, 10) - 1].completed = false;
     }
+    localStorage.setItem('list', JSON.stringify(toDoTasks));
   });
 
   const $placeHolderTask = document.createElement('span');
@@ -127,7 +130,7 @@ export const saveStorage = () => {
   data.forEach((i) => {
     toDoTasks.push(i);
     const $taskContainer = document.createElement('div');
-    $taskContainer.setAttribute('id', toDoTasks.length + 1);
+    $taskContainer.setAttribute('id', toDoTasks.length);
     $taskContainer.classList.add('task-container', 'input-group', 'mb-3');
     $listContainer.appendChild($taskContainer);
 
@@ -147,12 +150,14 @@ export const saveStorage = () => {
       $checkBox.parentElement.nextElementSibling.classList.toggle('line-through');
       $checkBox.parentElement.parentElement.lastElementChild.classList.toggle('trash-active');
       $checkBox.parentElement.parentElement.lastElementChild.previousElementSibling.classList.toggle('hidden');
-
+      console.log(toDoTasks[parseInt($checkBox.parentElement.parentElement.id, 10) - 1])
+  
       if ($checkBox.checked) {
         toDoTasks[parseInt($checkBox.parentElement.parentElement.id, 10) - 1].completed = true;
       } else {
         toDoTasks[parseInt($checkBox.parentElement.parentElement.id, 10) - 1].completed = false;
       }
+      localStorage.setItem('list', JSON.stringify(toDoTasks));
     });
 
     const $placeHolderTask = document.createElement('span');
@@ -186,3 +191,23 @@ export const saveStorage = () => {
   });
   localStorage.setItem('list', JSON.stringify(toDoTasks));
 };
+
+const clearAll = () => {
+  const localData = JSON.parse(localStorage.getItem('list'));
+  const $allTaskContainers = document.querySelectorAll('.task-container');
+  console.log($allTaskContainers)
+  $allTaskContainers.forEach(i => {
+    const elem = i;
+    console.log(i.childNodes[1])
+    if (i.childNodes[1].classList.contains('line-through')) {
+      console.log('fdsa')
+      i.remove();
+    }
+  })
+  let count = 0;
+  const data = Array.from(localData).filter(i => i.completed === false);
+  data.map(i => i.index = count += 1);
+  localStorage.setItem('list', JSON.stringify(data));
+}
+
+$clearButton.addEventListener('click', clearAll);
