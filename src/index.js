@@ -14,6 +14,7 @@ class Task {
 
 const $listContainer = document.getElementById('list-container');
 const $textNewTask = document.getElementById('textNewTask');
+const $addButton = document.querySelector('.add-button');
 
 let toDoTasks = [];
 
@@ -79,6 +80,16 @@ $textNewTask.addEventListener('keypress', e => {
     e.preventDefault();
     addTask($textNewTask.value);
     $textNewTask.value = '';
+  }
+})
+
+$addButton.addEventListener('click', e => {
+  if ($textNewTask.value) {
+    e.preventDefault();
+    addTask($textNewTask.value);
+    $textNewTask.value = '';
+    console.log(JSON.parse(localStorage.getItem('list')))
+    console.log(toDoTasks)
   }
 })
 
