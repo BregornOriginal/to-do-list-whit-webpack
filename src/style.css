@@ -2,13 +2,28 @@ body {
   background-color: rgb(204, 157, 157);
 }
 
+.hidden {
+  display: none;
+}
+
+.trash-active {
+  display: block;
+}
+
 .input-group {
   width: 40%;
 }
 
-.clear-button {
+.clear-button-container {
   display: flex;
   justify-content: center;
+}
+
+.clear-button-container:hover {
+  filter: brightness(1.25);
+}
+
+.clear-button {
   width: 40%;
 }
 
@@ -20,4 +35,28 @@ body {
 
 .btn-outline-secondary {
   background-color: rgb(204, 230, 253);
+}
+
+.edit-button {
+  cursor: pointer;
+}
+
+.edit-button:active {
+  cursor: all-scroll;
+}
+
+.trash-icon {
+  font-size: 30px;
+}
+
+.checked {
+  background-color: bisque;
+}
+
+.line-through {
+  text-decoration: line-through;
+}
+
+.form-control:focus {
+  background-color: bisque;
 }

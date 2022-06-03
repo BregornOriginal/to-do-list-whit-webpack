@@ -3,15 +3,19 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://kit.fontawesome.com/7b2c5e5844.js" crossorigin="anonymous"></script>
 		<title>Wbpack Exercise</title>
 	</head>
 	<body>
 		<section id="list-container">
 			<h1>Today's To Do</h1>
 			<div class="input-group mb-3">
-				<input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
-				<button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+				<input id="textNewTask" type="text" class="form-control" placeholder="Enter new task" aria-label="Recipient's username" aria-describedby="button-addon2">
+				<button class="btn btn-outline-secondary" type="button" id="button-addon2">Add</button>
 			</div>
 		</section>
+		<div class="clear-button-container">
+			<button class="btn btn-secondary btn-lg bg-success text-white clear-button">Clear all Completed</button>
+		</div>
 	</body>
 </html>
