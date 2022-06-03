@@ -46,6 +46,7 @@ body {
 }
 
 .trash-icon {
+  cursor: pointer;
   font-size: 30px;
 }
 
