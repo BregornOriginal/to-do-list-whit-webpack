@@ -34,13 +34,10 @@
 
 **This is an example of how you may give instructions on setting up your project locally.**
 **Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
+
 ### Prerequisites
 
 **To get a local copy up and running follow these simple example steps**.
-
-### Prerequisites
-
-- You need to have a code editor to be able to run the code. VSCode is most preferred.
 
 ### Setup
 
@@ -49,7 +46,8 @@
 
 ### Install
 
-- Run it in your code editor
+- To install this project, you can run the following command: `npm install`
+- Then to run the server, `npm start`
 
 ### Usage
 
