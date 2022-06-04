@@ -64,7 +64,6 @@ export const addTask = () => {
     $checkBox.parentElement.nextElementSibling.classList.toggle('line-through');
     $checkBox.parentElement.parentElement.lastElementChild.classList.toggle('trash-active');
     $checkBox.parentElement.parentElement.lastElementChild.previousElementSibling.classList.toggle('hidden');
-    console.log(toDoTasks[parseInt($checkBox.parentElement.parentElement.id, 10) - 1]);
 
     if ($checkBox.checked) {
       toDoTasks[parseInt($checkBox.parentElement.parentElement.id, 10) - 1].completed = true;
@@ -151,7 +150,6 @@ export const saveStorage = () => {
       $checkBox.parentElement.nextElementSibling.classList.toggle('line-through');
       $checkBox.parentElement.parentElement.lastElementChild.classList.toggle('trash-active');
       $checkBox.parentElement.parentElement.lastElementChild.previousElementSibling.classList.toggle('hidden');
-      console.log(toDoTasks[parseInt($checkBox.parentElement.parentElement.id, 10) - 1]);
 
       if ($checkBox.checked) {
         toDoTasks[parseInt($checkBox.parentElement.parentElement.id, 10) - 1].completed = true;
@@ -196,7 +194,6 @@ export const saveStorage = () => {
 const clearAll = () => {
   const localData = JSON.parse(localStorage.getItem('list'));
   const $allTaskContainers = document.querySelectorAll('.task-container');
-  console.log($allTaskContainers);
   $allTaskContainers.forEach((i) => {
     if (i.childNodes[1].classList.contains('line-through')) {
       i.remove();
