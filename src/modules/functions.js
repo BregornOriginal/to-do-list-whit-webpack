@@ -1,4 +1,5 @@
 /* eslint implicit-arrow-linebreak: ["error", "below"] */
+/* eslint no-multi-assign: ["error", { "ignoreNonDeclaration": true }] */
 
 import { updateIndex, updateElementId } from './update-index.js';
 
@@ -63,7 +64,7 @@ export const addTask = () => {
     $checkBox.parentElement.nextElementSibling.classList.toggle('line-through');
     $checkBox.parentElement.parentElement.lastElementChild.classList.toggle('trash-active');
     $checkBox.parentElement.parentElement.lastElementChild.previousElementSibling.classList.toggle('hidden');
-    console.log(toDoTasks[parseInt($checkBox.parentElement.parentElement.id, 10) - 1])
+    console.log(toDoTasks[parseInt($checkBox.parentElement.parentElement.id, 10) - 1]);
 
     if ($checkBox.checked) {
       toDoTasks[parseInt($checkBox.parentElement.parentElement.id, 10) - 1].completed = true;
@@ -150,8 +151,8 @@ export const saveStorage = () => {
       $checkBox.parentElement.nextElementSibling.classList.toggle('line-through');
       $checkBox.parentElement.parentElement.lastElementChild.classList.toggle('trash-active');
       $checkBox.parentElement.parentElement.lastElementChild.previousElementSibling.classList.toggle('hidden');
-      console.log(toDoTasks[parseInt($checkBox.parentElement.parentElement.id, 10) - 1])
-  
+      console.log(toDoTasks[parseInt($checkBox.parentElement.parentElement.id, 10) - 1]);
+
       if ($checkBox.checked) {
         toDoTasks[parseInt($checkBox.parentElement.parentElement.id, 10) - 1].completed = true;
       } else {
@@ -195,19 +196,19 @@ export const saveStorage = () => {
 const clearAll = () => {
   const localData = JSON.parse(localStorage.getItem('list'));
   const $allTaskContainers = document.querySelectorAll('.task-container');
-  console.log($allTaskContainers)
-  $allTaskContainers.forEach(i => {
-    const elem = i;
-    console.log(i.childNodes[1])
+  console.log($allTaskContainers);
+  $allTaskContainers.forEach((i) => {
     if (i.childNodes[1].classList.contains('line-through')) {
-      console.log('fdsa')
       i.remove();
     }
-  })
+  });
   let count = 0;
-  const data = Array.from(localData).filter(i => i.completed === false);
-  data.map(i => i.index = count += 1);
-  localStorage.setItem('list', JSON.stringify(data));
-}
+  const data = Array.from(localData).filter((i) =>
+    i.completed === false);
+  data.map((i) => {
+    i.index = count += 1;
+    return localStorage.setItem('list', JSON.stringify(data));
+  });
+};
 
 $clearButton.addEventListener('click', clearAll);
