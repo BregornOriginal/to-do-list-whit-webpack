@@ -8,7 +8,7 @@
 
 ## Live Demo
 
-[Live Demo Link]()
+[Live Demo Link](https://bregornoriginal.github.io/to-do-list-whit-webpack/dist)
 
 ## Build With
 
