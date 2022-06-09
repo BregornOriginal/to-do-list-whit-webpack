@@ -93,17 +93,21 @@ export const addTask = () => {
   $taskContainer.appendChild($trash);
 
   $trash.addEventListener('click', () => {
-    $trash.parentElement.remove();
-    const newToDoTask = toDoTasks.filter((task) =>
-      task.index !== parseInt($trash.parentElement.id, 10));
-    toDoTasks = [...newToDoTask];
-    updateIndex(toDoTasks);
-    updateElementId(toDoTasks);
-    localStorage.setItem('list', JSON.stringify(toDoTasks));
+    deleteTask($trash);
   });
 
   const object = new Task($textNewTask.value, false, toDoTasks.length + 1);
   toDoTasks.push(object);
+  localStorage.setItem('list', JSON.stringify(toDoTasks));
+};
+
+const deleteTask = ($trash) => {
+  $trash.parentElement.remove();
+  const newToDoTask = toDoTasks.filter((task) =>
+    task.index !== parseInt($trash.parentElement.id, 10));
+  toDoTasks = [...newToDoTask];
+  updateIndex(toDoTasks);
+  updateElementId(toDoTasks);
   localStorage.setItem('list', JSON.stringify(toDoTasks));
 };
 
